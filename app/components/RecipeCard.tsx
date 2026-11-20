@@ -1,9 +1,17 @@
 
+import Link from "next/link";
 import type { Recipe } from "../data/recipes";
 
-export default function RecipeCard({ recipe }: { recipe: Recipe }) {
+export default function RecipeCard({
+  recipe,
+}: {
+  recipe: Recipe;
+}) {
   return (
-    <div className="recipe-card">
+    <Link
+      href={`/recipe/${recipe.id}`}
+      className="recipe-card"
+    >
       <img
         src={recipe.image}
         alt={recipe.title}
@@ -20,6 +28,6 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
           <span>{recipe.difficulty}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
