@@ -9,9 +9,11 @@ export default function Home() {
         <h1>Discover Delicious Recipes</h1>
         <p>
           Explore amazing dishes from around the world.
-          Find something delicious to cook today!
+          Find something delicious to cook today itself
         </p>
       </section>
+
+
 
       <section className="recipes-section">
         <h2>Popular Recipes</h2>
