@@ -26,7 +26,86 @@ body {
 }
 
 
+/* Loading skeleton */
 
+.skeleton-card {
+  background: white;
+  border-radius: 14px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.skeleton-image {
+  height: 200px;
+  background: #e7e5e4;
+  border-radius: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-text {
+  height: 16px;
+  width: 80%;
+  margin-top: 18px;
+  border-radius: 5px;
+  background: #e7e5e4;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-text.short {
+  width: 50%;
+  margin-top: 12px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Not found and error pages */
+
+.message-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.message-container h1 {
+  font-size: 55px;
+  color: #e65b35;
+  margin-bottom: 15px;
+}
+
+.message-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.message-container p {
+  max-width: 500px;
+  color: #78716c;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.home-button {
+  background: #e65b35;
+  color: white;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background: #c94b2b;
+=======
 .search-input {
   width: 100%;
   padding: 15px;
@@ -120,4 +199,5 @@ body {
   .detail-content h1 {
     font-size: 27px;
   }
+
 }

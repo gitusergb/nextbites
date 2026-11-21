@@ -1,7 +1,14 @@
 
 import Link from "next/link";
+import { getRecipe , recipes} from "@/app/data/recipes";
 import { notFound } from "next/navigation";
-import { getRecipe } from "../../data/recipes";
+
+export function generateStaticParams() {
+  return recipes.map((recipe) => ({
+    id: String(recipe.id),
+  }));
+}
+
 
 export default async function RecipeDetails({
   params,
@@ -10,13 +17,13 @@ export default async function RecipeDetails({
 }) {
   const { id } = await params;
 
-  const recipe = getRecipe(id);
 
   if (!recipe) {
     notFound();
   }
 
   return (
+
     <main className="detail-container">
       <Link href="/" className="back-link">
         ← Back to recipes
@@ -44,7 +51,9 @@ export default async function RecipeDetails({
           <h2>Ingredients</h2>
 
           <ul className="detail-list">
-            {recipe.ingredients.map((ingredient, index) => (
+
+            {(recipe.ingredients ?? []).map((ingredient, index) => (
+
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
@@ -52,7 +61,9 @@ export default async function RecipeDetails({
           <h2>Cooking Instructions</h2>
 
           <ol className="detail-list">
-            {recipe.steps.map((step, index) => (
+
+            {(recipe.steps ?? []).map((step, index) => (
+
               <li key={index}>{step}</li>
             ))}
           </ol>
@@ -60,4 +71,6 @@ export default async function RecipeDetails({
       </div>
     </main>
   );
+
 }
+
