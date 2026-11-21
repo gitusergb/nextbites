@@ -103,7 +103,7 @@ export const recipes: Recipe[] = [
       "Cover and steep in the fridge 12 to 18 hours.",
       "Strain through a paper filter.",
       "Pour over ice and dilute to taste.",
-
+    ],
    
   },
   {

@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-import { recipes } from "./data/recipes";
-import RecipeGrid from "./components/RecipeGrid";
-
-
-export default function Home() {
-  return (
-    <main>
-      <h1>Find your next bite.</h1>
-      
-
-        <RecipeGrid recipes={recipes} />
-=======
 
 import { recipes } from "./data/recipes";
 import RecipeGrid from "./components/RecipeGrid";
+
+
+
 
 export default function Home() {
   return (
@@ -31,7 +21,7 @@ export default function Home() {
 
         <RecipeGrid recipes={recipes} />
       </section>
->>>>>>> d305900b97b132a1ffd6301e9652346f294cb8b7
+
     </main>
   );
 }

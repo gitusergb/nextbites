@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Suspense } from "react";
 import { getRecipe, recipes } from "@/app/data/recipes";
@@ -10,45 +9,35 @@ export function generateStaticParams() {
   }));
 }
 
-<<<<<<< HEAD
 export default function RecipePage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<main className="detail-container">Loading recipe...</main>}>
+    <Suspense
+      fallback={
+        <main className="detail-container">Loading recipe...</main>
+      }
+    >
       <RecipeDetails params={params} />
     </Suspense>
   );
 }
 
 async function RecipeDetails({
-=======
-
-export default async function RecipeDetails({
->>>>>>> d305900b97b132a1ffd6301e9652346f294cb8b7
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-<<<<<<< HEAD
   const recipe = getRecipe(id);
-
-  if (!recipe) notFound();
-
-  return (
-=======
-
 
   if (!recipe) {
     notFound();
   }
 
   return (
-
->>>>>>> d305900b97b132a1ffd6301e9652346f294cb8b7
     <main className="detail-container">
       <Link href="/" className="back-link">
         ← Back to recipes
@@ -74,9 +63,7 @@ export default async function RecipeDetails({
           <h2>Ingredients</h2>
 
           <ul className="detail-list">
-
             {(recipe.ingredients ?? []).map((ingredient, index) => (
-
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
@@ -84,9 +71,7 @@ export default async function RecipeDetails({
           <h2>Cooking Instructions</h2>
 
           <ol className="detail-list">
-
             {(recipe.steps ?? []).map((step, index) => (
-
               <li key={index}>{step}</li>
             ))}
           </ol>
@@ -94,6 +79,4 @@ export default async function RecipeDetails({
       </div>
     </main>
   );
-
 }
-
