@@ -1,131 +1,137 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffaf4;
+  --foreground: #29231f;
+  --muted: #756b62;
+  --primary: #e76f32;
+  --border: #eee2d7;
+  --card: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 /* Loading skeleton */
-
 .skeleton-card {
-  background: white;
-  border-radius: 14px;
-  padding: 15px;
   overflow: hidden;
+  padding: 15px;
+  background: var(--card);
+  border-radius: 14px;
 }
 
-.skeleton-image {
-  height: 200px;
-  background: #e7e5e4;
-  border-radius: 10px;
-  animation: pulse 1.5s infinite;
-}
-
-.skeleton-text {
-  height: 16px;
-  width: 80%;
-  margin-top: 18px;
-  border-radius: 5px;
-  background: #e7e5e4;
-  animation: pulse 1.5s infinite;
-}
-
-.skeleton-text.short {
-  width: 50%;
-  margin-top: 12px;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: 0.4;
-  }
-}
-
-/* Not found and error pages */
-
-.message-container {
-  min-height: 70vh;
+/* Navigation */
+.nav {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 7%;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.brand-mark {
+  font-size: 1.6rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+/* Home page */
+.home {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.hero {
+  margin-bottom: 36px;
   text-align: center;
-  padding: 30px 20px;
 }
 
-.message-container h1 {
-  font-size: 55px;
-  color: #e65b35;
-  margin-bottom: 15px;
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -0.04em;
 }
 
-.message-container h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.message-container p {
-  max-width: 500px;
-  color: #78716c;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-.home-button {
-  background: #e65b35;
-  color: white;
-  padding: 13px 25px;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
+.hl {
+  color: var(--primary);
 }
 
 .home-button:hover {
   background: #c94b2b;
-=======
+}
+
 .search-input {
   width: 100%;
-  padding: 15px;
   margin-bottom: 25px;
-  border: 1px solid #ddd;
+  padding: 15px;
+  border: 1px solid var(--border);
   border-radius: 10px;
   font-size: 16px;
   outline: none;
 }
 
 .search-input:focus {
-  border-color: #e65b35;
+  border-color: var(--primary);
 }
 
 .no-results {
-  text-align: center;
   padding: 40px 10px;
-  color: #78716c;
-  background: white;
+  color: var(--muted);
+  background: var(--card);
   border-radius: 12px;
+  text-align: center;
 }
 
 .recipe-card {
@@ -134,70 +140,122 @@ body {
   text-decoration: none;
 }
 
+/* Footer */
+.foot {
+  padding: 24px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Recipe detail page */
 .detail-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+  width: min(1000px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
 }
 
 .back-link {
   display: inline-block;
-  margin-bottom: 25px;
-  color: #e65b35;
-  text-decoration: none;
-  font-weight: bold;
+  margin-bottom: 24px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }
 
 .detail-card {
-  background: white;
-  border-radius: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgb(41 35 31 / 8%);
 }
 
 .detail-image {
+  display: block;
   width: 100%;
-  height: 350px;
+  height: 100%;
+  min-height: 420px;
   object-fit: cover;
 }
 
 .detail-content {
-  padding: 30px;
+  padding: 32px;
+}
+
+.recipe-cuisine {
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .detail-content h1 {
-  font-size: 34px;
   margin: 12px 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
 }
 
 .detail-meta {
-  color: #78716c;
-  margin-bottom: 30px;
-  line-height: 1.7;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .detail-content h2 {
-  margin: 25px 0 15px;
-  font-size: 23px;
+  margin: 28px 0 12px;
+  font-size: 1.25rem;
 }
 
 .detail-list {
-  padding-left: 25px;
-  line-height: 2;
-  color: #57534e;
+  padding-left: 24px;
+  line-height: 1.8;
 }
 
-@media (max-width: 600px) {
+.detail-list li {
+  margin-bottom: 6px;
+  padding-left: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 700px) {
+  .detail-container {
+    width: calc(100% - 28px);
+    padding-top: 24px;
+  }
+
+  .detail-card {
+    grid-template-columns: 1fr;
+  }
+
   .detail-image {
-    height: 220px;
+    height: 260px;
+    min-height: 0;
   }
 
   .detail-content {
-    padding: 20px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 16px 20px;
   }
 
-  .detail-content h1 {
-    font-size: 27px;
+  .nav-links {
+    gap: 14px;
+    font-size: 0.9rem;
   }
 
+  .home {
+    width: calc(100% - 32px);
+    padding-top: 32px;
+  }
 }

@@ -1,6 +1,6 @@
-
 import Link from "next/link";
-import { getRecipe , recipes} from "@/app/data/recipes";
+import { Suspense } from "react";
+import { getRecipe, recipes } from "@/app/data/recipes";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -9,21 +9,35 @@ export function generateStaticParams() {
   }));
 }
 
+export default function RecipePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  return (
+    <Suspense
+      fallback={
+        <main className="detail-container">Loading recipe...</main>
+      }
+    >
+      <RecipeDetails params={params} />
+    </Suspense>
+  );
+}
 
-export default async function RecipeDetails({
+async function RecipeDetails({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-
+  const recipe = getRecipe(id);
 
   if (!recipe) {
     notFound();
   }
 
   return (
-
     <main className="detail-container">
       <Link href="/" className="back-link">
         ← Back to recipes
@@ -37,23 +51,19 @@ export default async function RecipeDetails({
         />
 
         <div className="detail-content">
-          <span className="recipe-cuisine">
-            {recipe.cuisine}
-          </span>
+          <span className="recipe-cuisine">{recipe.cuisine}</span>
 
           <h1>{recipe.title}</h1>
 
           <p className="detail-meta">
-            Cooking time: {recipe.minutes} minutes |
-            Difficulty: {recipe.difficulty}
+            Cooking time: {recipe.minutes} minutes | Difficulty:{" "}
+            {recipe.difficulty}
           </p>
 
           <h2>Ingredients</h2>
 
           <ul className="detail-list">
-
             {(recipe.ingredients ?? []).map((ingredient, index) => (
-
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
@@ -61,9 +71,7 @@ export default async function RecipeDetails({
           <h2>Cooking Instructions</h2>
 
           <ol className="detail-list">
-
             {(recipe.steps ?? []).map((step, index) => (
-
               <li key={index}>{step}</li>
             ))}
           </ol>
@@ -71,6 +79,4 @@ export default async function RecipeDetails({
       </div>
     </main>
   );
-
 }
-

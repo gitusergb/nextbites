@@ -2,6 +2,9 @@
 import { recipes } from "./data/recipes";
 import RecipeGrid from "./components/RecipeGrid";
 
+
+
+
 export default function Home() {
   return (
     <main className="home-container">
@@ -18,6 +21,7 @@ export default function Home() {
 
         <RecipeGrid recipes={recipes} />
       </section>
+
     </main>
   );
 }
