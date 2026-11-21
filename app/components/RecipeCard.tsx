@@ -1,8 +1,10 @@
 
+import Link from "next/dist/client/link";
 import type { Recipe } from "../data/recipes";
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
-  return (
+  return ( <Link href={`/recipe/${recipe.id}`} className="card">
+    <div className="card"></div>
     <div className="recipe-card">
       <img
         src={recipe.image}
@@ -21,5 +23,6 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
         </div>
       </div>
     </div>
+     </Link>
   );
 }

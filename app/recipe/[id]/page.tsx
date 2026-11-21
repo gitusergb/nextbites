@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getRecipe , recipes} from "@/app/data/recipes";
+import { Suspense } from "react";
+import { getRecipe, recipes } from "@/app/data/recipes";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -8,15 +9,29 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function RecipeDetails({
+export default function RecipePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  return (
+    <Suspense fallback={<main className="detail-container">Loading recipe...</main>}>
+      <RecipeDetails params={params} />
+    </Suspense>
+  );
+}
+
+async function RecipeDetails({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const recipe = getRecipe(id);          // find the matching recipe
-  if (!recipe) notFound();               // no match? show the 404 page
-   return (
+  const recipe = getRecipe(id);
+
+  if (!recipe) notFound();
+
+  return (
     <main className="detail-container">
       <Link href="/" className="back-link">
         ← Back to recipes
@@ -30,15 +45,13 @@ export default async function RecipeDetails({
         />
 
         <div className="detail-content">
-          <span className="recipe-cuisine">
-            {recipe.cuisine}
-          </span>
+          <span className="recipe-cuisine">{recipe.cuisine}</span>
 
           <h1>{recipe.title}</h1>
 
           <p className="detail-meta">
-            Cooking time: {recipe.minutes} minutes |
-            Difficulty: {recipe.difficulty}
+            Cooking time: {recipe.minutes} minutes | Difficulty:{" "}
+            {recipe.difficulty}
           </p>
 
           <h2>Ingredients</h2>
