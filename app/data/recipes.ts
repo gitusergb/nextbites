@@ -19,6 +19,8 @@ export type Recipe = {
   steps?: string[];
   image: string;
    blurb?: string;
+
+
 };
 
 
@@ -33,6 +35,7 @@ export const recipes: Recipe[] = [
     blurb: "Blistered crust, San Marzano sauce, melty mozzarella, fresh basil.",
     image: "https://images.unsplash.com/photo-1579751626657-72bc17010498?w=600",
     ingredients: [
+
       "1 pizza dough ball",
       "1/2 cup tomato sauce",
       "125g fresh mozzarella",
@@ -45,7 +48,13 @@ export const recipes: Recipe[] = [
       "Tear mozzarella over the top and drizzle oil.",
       "Bake 7 to 9 minutes until the crust is charred.",
       "Finish with basil and a pinch of salt.",
+      "Pizza dough",
+      "Tomato sauce",
+      "Mozzarella cheese",
+      "Fresh basil",
+      "Olive oil",
     ],
+  
   },
   {
     id: "paneer-tikka",
@@ -54,6 +63,7 @@ export const recipes: Recipe[] = [
     cuisine: "Indian",
     minutes: 40,
     difficulty: "Medium",
+
     blurb: "Smoky, spiced paneer cubes grilled with peppers and onion.",
     image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600",
     ingredients: [
@@ -69,6 +79,7 @@ export const recipes: Recipe[] = [
       "Thread onto skewers.",
       "Grill or broil until charred at the edges.",
       "Squeeze lemon over and serve hot.",
+
     ],
   },
   {
@@ -78,6 +89,7 @@ export const recipes: Recipe[] = [
     cuisine: "Drinks",
     minutes: 10,
     difficulty: "Easy",
+
     blurb: "Smooth, low-acid coffee steeped slow overnight.",
     image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600",
     ingredients: [
@@ -91,7 +103,8 @@ export const recipes: Recipe[] = [
       "Cover and steep in the fridge 12 to 18 hours.",
       "Strain through a paper filter.",
       "Pour over ice and dilute to taste.",
-    ],
+
+   
   },
   {
     id: "veg-burger",
